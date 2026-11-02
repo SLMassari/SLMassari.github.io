@@ -1,0 +1,73 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+
+      # Every page is prerendered to <route>/index.html, so the folder to
+      # publish is the static client output. Locate it explicitly instead of
+      # guessing from a `find`: a bare dirname of the first index.html found
+      # resolves to a page subdirectory (e.g. .output/public/contact) and
+      # silently publishes the wrong tree.
+      - name: Prepare static output
+        run: |
+          OUT=""
+          for candidate in dist/client .output/public; do
+            if [ -f "$candidate/index.html" ]; then
+              OUT="$candidate"
+              break
+            fi
+          done
+          if [ -z "$OUT" ]; then
+            echo "No prerendered index.html found in the build output." >&2
+            exit 1
+          fi
+          echo "Static output: $OUT"
+          for page in about consulting mentorship contact; do
+            if [ ! -f "$OUT/$page/index.html" ]; then
+              echo "Missing prerendered page: $page" >&2
+              exit 1
+            fi
+          done
+          mkdir -p site && cp -r "$OUT"/. site/
+          cp public/CNAME site/CNAME
+          # Publish the archived 2019-2026 portfolio alongside the live site. All of
+          # its asset paths are relative, so it works unchanged under /archive/.
+          rm -rf site/archive && mkdir -p site/archive
+          cp -r archive/index.html archive/css archive/img archive/js archive/vendor site/archive/
+          # GitHub Pages serves 404.html for unknown URLs; the app then shows its own not-found page
+          [ -f site/404.html ] || cp site/index.html site/404.html
+          touch site/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
