@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Linkedin } from "lucide-react";
 import { ClosingCta, Eyebrow, PageIntro } from "@/components/site/Layout";
-import { pageHead } from "@/lib/site";
+import { pageHead, SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/about")({
   head: () =>
@@ -35,6 +36,16 @@ const TIMELINE = [
       "I saw how creating the right environment, understanding what motivates people and building genuine trust could lead to significant improvements in both performance and people's enjoyment of their work.",
       "I also worked on a variety of organizational initiatives, developing my ability to influence without authority, build teams and turn ideas into meaningful change.",
       "Rather than pursue another role within executive leadership, I made a deliberate decision to move into Engineering Management. I wanted to understand the realities of managing people and leading teams before taking responsibility for leading those who do.",
+    ],
+  },
+  {
+    org: "Phorest Salon Software",
+    role: "Engineering Manager",
+    body: [
+      "After relocating to Italy, I joined Phorest Salon Software as an Engineering Manager, taking responsibility for engineering teams and their delivery, development and overall effectiveness.",
+      "My focus was on building effective teams, creating clarity around priorities and direction, and establishing an environment where engineers could take ownership, collaborate effectively and continuously improve how they worked.",
+      "I worked closely with Product Management and other stakeholders to improve how teams understood problems, evaluated opportunities and delivered meaningful outcomes for the business and its customers.",
+      "The role brought together the different perspectives I'd developed throughout my career: the technical foundation of an engineer, the organizational perspective of a Chief of Staff and the practical experience of leading and developing engineering teams.",
     ],
   },
 ];
@@ -137,7 +148,7 @@ function About() {
           ))}
           <li className="grid gap-6 border-t py-12 md:grid-cols-12">
             <div className="md:col-span-4">
-              <p className="font-mono text-xs text-terracotta">Chapter 03</p>
+              <p className="font-mono text-xs text-terracotta">Chapter 04</p>
               <h3 className="mt-2 text-3xl">Bringing the perspectives together</h3>
             </div>
             <div className="prose-body md:col-span-7 md:col-start-6">
@@ -258,6 +269,20 @@ function About() {
           <p>Whatever the challenge, I enjoy helping people find a better way forward.</p>
         </div>
       </section>
+
+      {/* LinkedIn */}
+      <div className="mx-auto max-w-6xl px-6 pb-16">
+        <a
+          href={SITE.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Samuel Massari on LinkedIn (opens in a new tab)"
+          className="link-underline inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+        >
+          <Linkedin className="h-4 w-4" aria-hidden />
+          Connect on LinkedIn
+        </a>
+      </div>
 
       <ClosingCta title="If there's something you're working through, I'd love to hear about it." />
     </>

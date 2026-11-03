@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, Linkedin } from "lucide-react";
 import { NAV, SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -134,6 +134,16 @@ export function SiteFooter() {
           <p className="eyebrow mb-4 !text-ink-foreground/60">Contact</p>
           <a href={`mailto:${SITE.email}`} className="link-underline text-sm">
             {SITE.email}
+          </a>
+          <a
+            href={SITE.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Samuel Massari on LinkedIn (opens in a new tab)"
+            className="link-underline mt-3 flex w-fit items-center gap-2 text-sm opacity-85 transition-opacity hover:opacity-100"
+          >
+            <Linkedin className="h-4 w-4" aria-hidden />
+            LinkedIn
           </a>
         </div>
       </div>

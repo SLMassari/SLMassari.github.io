@@ -4,6 +4,7 @@ export const SITE = {
   legalName: "SLM Strategies di Samuel Massari",
   url: "https://samuelmassari.com",
   email: "samuel@samuelmassari.com",
+  linkedin: "https://www.linkedin.com/in/samuel-massari/",
   photo: "/images/samuel-massari-speaking.jpg",
 };
 

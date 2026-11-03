@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Linkedin } from "lucide-react";
 import { Eyebrow } from "@/components/site/Layout";
 import { pageHead, SITE } from "@/lib/site";
 
@@ -54,6 +54,28 @@ function Contact() {
             </a>
             <p className="mt-6 border-t pt-6 text-sm leading-relaxed text-muted-foreground">
               A few lines about your situation is plenty to get started.
+            </p>
+          </div>
+          <div className="mt-6 border border-foreground bg-background p-8">
+            <p className="eyebrow">LinkedIn</p>
+            <a
+              href={SITE.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Samuel Massari on LinkedIn (opens in a new tab)"
+              className="group mt-4 flex items-center justify-between gap-4 font-serif text-2xl hover:text-primary"
+            >
+              <span className="inline-flex items-center gap-3">
+                <Linkedin className="h-5 w-5 shrink-0" aria-hidden />
+                samuel-massari
+              </span>
+              <ArrowUpRight
+                className="h-6 w-6 shrink-0 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                aria-hidden
+              />
+            </a>
+            <p className="mt-6 border-t pt-6 text-sm leading-relaxed text-muted-foreground">
+              Prefer to connect on LinkedIn? That's just as welcome.
             </p>
           </div>
         </aside>
