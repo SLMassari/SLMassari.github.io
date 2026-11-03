@@ -5,8 +5,9 @@ engineering consulting practice of Samuel Massari: organizational reviews, targe
 improvements, leadership coaching, and engineering management mentorship.
 
 This repository was originally the personal portfolio site (2019–2026). That site is
-preserved verbatim in [`archive/`](archive/) and is still browsable at
-**[/archive/](https://samuelmassari.com/archive/)**.
+preserved verbatim in [`archive/`](archive/) for the record. It is **not published** — the
+deploy workflow does not copy it into the site, so it is not reachable at
+`/archive/` or by any other URL.
 
 ## Layout
 
@@ -14,7 +15,7 @@ preserved verbatim in [`archive/`](archive/) and is still browsable at
 | --- | --- |
 | `src/` | The current site — TanStack Start routes, components, and design system |
 | `public/` | Static assets served as-is (`images/`, `favicon.svg`, `robots.txt`, `CNAME`) |
-| `archive/` | The original portfolio site, preserved unchanged (see [`archive/README.md`](archive/README.md)) |
+| `archive/` | The original portfolio site, preserved unchanged in the repository and not published (see [`archive/README.md`](archive/README.md)) |
 | `.github/workflows/deploy.yml` | Builds the site and publishes it to GitHub Pages |
 
 ## Stack
@@ -49,8 +50,8 @@ not exist in the static build.
 
 `.github/workflows/deploy.yml` runs on every push to `master`: it installs with
 `bun install --frozen-lockfile`, builds, collects the prerendered output into a `site/`
-directory, asserts every page is present, publishes `archive/` alongside it, and uploads
-the result as the GitHub Pages artifact.
+directory, asserts every page is present, and uploads the result as the GitHub Pages
+artifact.
 
 ## Project conventions
 
@@ -61,7 +62,8 @@ the result as the GitHub Pages artifact.
   `src/components/site/Layout.tsx`; per-page metadata comes from `pageHead()` in
   `src/lib/site.ts`.
 - `src/routeTree.gen.ts` is generated — never edit it by hand.
-- `archive/` is frozen. It is excluded from lint and formatting and is published as-is.
+- `archive/` is frozen. It is excluded from lint and formatting, and it is kept in the
+  repository only — the deploy workflow does not publish it.
 
 ## Credits
 

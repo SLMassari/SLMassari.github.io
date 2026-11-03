@@ -18,7 +18,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: oven-sh/setup-bun@v2
       - run: bun install --frozen-lockfile
       - run: bun run build
@@ -50,15 +50,15 @@ jobs:
           done
           mkdir -p site && cp -r "$OUT"/. site/
           cp public/CNAME site/CNAME
-          # Publish the archived 2019-2026 portfolio alongside the live site. All of
-          # its asset paths are relative, so it works unchanged under /archive/.
-          rm -rf site/archive && mkdir -p site/archive
-          cp -r archive/index.html archive/css archive/img archive/js archive/vendor site/archive/
+          # The archived 2019-2026 portfolio lives in archive/ for the record but
+          # is deliberately NOT published: copying it into site/ would leave it
+          # reachable at /archive/, so the folder stays in the repository only.
+          # Unknown URLs then fall through to the 404 page below.
           # GitHub Pages serves 404.html for unknown URLs; the app then shows its own not-found page
           [ -f site/404.html ] || cp site/index.html site/404.html
           touch site/.nojekyll
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: site
 
@@ -70,4 +70,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
