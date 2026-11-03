@@ -146,27 +146,6 @@ function About() {
               </div>
             </li>
           ))}
-          <li className="grid gap-6 border-t py-12 md:grid-cols-12">
-            <div className="md:col-span-4">
-              <p className="font-mono text-xs text-terracotta">Chapter 04</p>
-              <h3 className="mt-2 text-3xl">Bringing the perspectives together</h3>
-            </div>
-            <div className="prose-body md:col-span-7 md:col-start-6">
-              <p>
-                Moving into Engineering Management gave me the opportunity to bring together
-                everything I'd learned.
-              </p>
-              <p>
-                I had the technical foundation of an engineer, an understanding of how executive
-                leadership approaches organizational challenges and now the direct experience of
-                leading and developing teams.
-              </p>
-              <p>
-                I could see problems from multiple perspectives and, importantly, understand how to
-                turn ideas into practical improvements.
-              </p>
-            </div>
-          </li>
         </ol>
       </section>
 
@@ -230,8 +209,8 @@ function About() {
 
       {/* Beyond work */}
       <section className="mx-auto max-w-6xl px-6 py-24">
-        <p className="eyebrow">Beyond work</p>
-        <div className="prose-body mt-6 max-w-3xl">
+        <h2 className="max-w-3xl text-4xl md:text-5xl">Beyond work</h2>
+        <div className="prose-body mt-8 max-w-3xl">
           <p>
             Sport has always been a big part of my life. From baseball and basketball growing up to
             boxing and competitive beach volleyball today, I've always enjoyed the process of
