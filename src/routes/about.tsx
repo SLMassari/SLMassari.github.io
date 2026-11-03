@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Linkedin } from "lucide-react";
 import { ClosingCta, Eyebrow, PageIntro } from "@/components/site/Layout";
-import { pageHead, SITE } from "@/lib/site";
+import { pageHead } from "@/lib/site";
 
 export const Route = createFileRoute("/about")({
   head: () =>
@@ -249,22 +248,9 @@ function About() {
         </div>
       </section>
 
-      {/* LinkedIn */}
       <ClosingCta
         center
         title="If there's something you're working through, I'd love to hear about it."
-        action={
-          <a
-            href={SITE.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Samuel Massari on LinkedIn (opens in a new tab)"
-            className="link-underline inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <Linkedin className="h-4 w-4" aria-hidden />
-            Connect on LinkedIn
-          </a>
-        }
       />
     </>
   );

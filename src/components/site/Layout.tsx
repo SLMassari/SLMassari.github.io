@@ -200,14 +200,11 @@ export function ClosingCta({
   title,
   children,
   cta,
-  action,
   center,
 }: {
   title: ReactNode;
   children?: ReactNode;
   cta?: string;
-  /** Extra content rendered alongside the CTA button. */
-  action?: ReactNode;
   /** Centre the CTA column against the heading instead of top-aligning it. */
   center?: boolean;
 }) {
@@ -224,7 +221,6 @@ export function ClosingCta({
           {children && <div className="prose-body">{children}</div>}
           <div className={cn("flex flex-wrap items-center gap-6", children && "mt-8")}>
             <CtaLink>{cta}</CtaLink>
-            {action}
           </div>
         </div>
       </div>
