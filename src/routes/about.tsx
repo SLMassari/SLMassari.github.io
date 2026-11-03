@@ -250,20 +250,22 @@ function About() {
       </section>
 
       {/* LinkedIn */}
-      <div className="mx-auto max-w-6xl px-6 pb-16">
-        <a
-          href={SITE.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Samuel Massari on LinkedIn (opens in a new tab)"
-          className="link-underline inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-        >
-          <Linkedin className="h-4 w-4" aria-hidden />
-          Connect on LinkedIn
-        </a>
-      </div>
-
-      <ClosingCta title="If there's something you're working through, I'd love to hear about it." />
+      <ClosingCta
+        center
+        title="If there's something you're working through, I'd love to hear about it."
+        action={
+          <a
+            href={SITE.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Samuel Massari on LinkedIn (opens in a new tab)"
+            className="link-underline inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <Linkedin className="h-4 w-4" aria-hidden />
+            Connect on LinkedIn
+          </a>
+        }
+      />
     </>
   );
 }

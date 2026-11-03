@@ -200,19 +200,31 @@ export function ClosingCta({
   title,
   children,
   cta,
+  action,
+  center,
 }: {
   title: ReactNode;
   children?: ReactNode;
   cta?: string;
+  /** Extra content rendered alongside the CTA button. */
+  action?: ReactNode;
+  /** Centre the CTA column against the heading instead of top-aligning it. */
+  center?: boolean;
 }) {
   return (
     <section className="border-t">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-24 md:grid-cols-12">
+      <div
+        className={cn(
+          "mx-auto grid max-w-6xl gap-10 px-6 py-24 md:grid-cols-12",
+          center && "md:items-center",
+        )}
+      >
         <h2 className="text-4xl md:col-span-5 md:text-5xl">{title}</h2>
         <div className="md:col-span-6 md:col-start-7">
           {children && <div className="prose-body">{children}</div>}
           <div className={cn("flex flex-wrap items-center gap-6", children && "mt-8")}>
             <CtaLink>{cta}</CtaLink>
+            {action}
           </div>
         </div>
       </div>
